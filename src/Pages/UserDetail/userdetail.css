@@ -1,0 +1,81 @@
+.detail{
+    margin-top: 100px;
+    font-family: 'Poppins';
+}
+
+.user-name{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    color: #12263a;
+    margin-bottom: 10px;
+}
+
+.user-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 15px;
+    background: #256eff;
+    color: #fff;
+    padding: 0 0.3rem;
+}
+.user-link:hover{
+    opacity: 0.9;
+    color: #fff;
+}
+
+.user-rating{
+    color: #ffc107;
+    margin: 15px 0;
+}
+.user-rating span{
+    font-weight: 600;
+    color: #252525;
+}
+
+.user-detail h2{
+    text-transform: capitalize;
+    color: #12263a;
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+.user-detail h6{
+    opacity: 0.9;
+    font-size: 18px;
+}
+.user-detail p{
+    font-size: 15px;
+    padding: 5px 0 5px;
+    opacity: 0.8;
+}
+
+.social-links{
+    display: flex;
+    flex-direction: column;
+}
+.social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    border: 1px solid #000;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.5s ease;
+}
+.social-links a:hover{
+    background: #000;
+    border-color: transparent;
+    color: #fff;
+}
+
+@media screen and (max-width:800px){
+    .user-content{
+        margin-top: 20px;
+    }
+}

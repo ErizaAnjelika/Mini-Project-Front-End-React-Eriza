@@ -1,0 +1,55 @@
+
+footer{
+    margin-top: 80px; 
+    color: #16205F;
+    font-family: 'Poppins';
+}
+
+.footer-logo img{
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer-title p{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-info{
+    margin-bottom:15px;
+    font-size: 15px;
+}
+.footer-info img{
+    margin-right: 20px;
+}
+.footer-links{
+    margin-left: 20px;
+    
+}
+.footer-links h5{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.footer-links ul li{
+    list-style-type: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.footer-links ul li:hover{
+    color: #ffa500; 
+}
+
+.footer-links .icon {
+    margin-right: 10px;
+    display: inline;
+    cursor: pointer;
+}
+.footer-links .icon:hover img{
+    filter: grayscale(100%);
+}
+.footer-copyright h4{
+    font-size: 15px;
+}
