@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import './register.css';
-import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import "./register.css";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   // handle password visibility
@@ -16,23 +16,23 @@ const Register = () => {
   };
 
   useEffect(() => {
-    const inputs = document.querySelectorAll('.input');
+    const inputs = document.querySelectorAll(".input");
 
     function focusFunc() {
       let parent = this.parentNode.parentNode;
-      parent.classList.add('focus');
+      parent.classList.add("focus");
     }
 
     function blurFunc() {
       let parent = this.parentNode.parentNode;
-      if (this.value == '') {
-        parent.classList.remove('focus');
+      if (this.value == "") {
+        parent.classList.remove("focus");
       }
     }
 
     inputs.forEach((input) => {
-      input.addEventListener('focus', focusFunc);
-      input.addEventListener('blur', blurFunc);
+      input.addEventListener("focus", focusFunc);
+      input.addEventListener("blur", blurFunc);
     });
   }, []);
   const onChangeEmail = (e) => {
@@ -54,23 +54,23 @@ const Register = () => {
       password: password,
     };
     axios
-      .post('https://reqres.in/api/register', bodyPayload)
+      .post("https://reqres.in/api/register", bodyPayload)
       .then((res) => {
         Swal.fire({
-          title: 'Resister Berhasil, Silahkan Login',
-          icon: 'success',
+          title: "Resister Berhasil, Silahkan Login",
+          icon: "success",
           showConfirmButton: true,
         });
         // Setel ulang nilai email dan password setelah berhasil register
-        setEmail('');
-        setPassword('');
+        setEmail("");
+        setPassword("");
         console.log(res.data);
-        navigate('/login');
+        navigate("/login");
       })
       .catch((err) => {
         Swal.fire({
-          title: 'Resister Gagal',
-          icon: 'error',
+          title: "Resister Gagal",
+          icon: "error",
           text: err.response.data.error,
           showConfirmButton: true,
         });
@@ -83,18 +83,11 @@ const Register = () => {
     <div className="body">
       <div className="container register">
         <div className="img">
-          <img
-            src="../src/img/register.svg"
-            alt=""
-          />
+          <img src="/img/register.svg" alt="" />
         </div>
         <div className="register-container">
           <div className="form">
-            <img
-              src="../src/img/avatar.svg"
-              alt=""
-              className="avatar"
-            />
+            <img src="/img/avatar.svg" alt="" className="avatar" />
             <h2>Register</h2>
             <div className="input-div one">
               <div className="icon">
@@ -118,58 +111,41 @@ const Register = () => {
 
                 <input
                   className="input"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   onChange={onChangePassword}
                   value={password}
                 />
                 <i
-                  className={`password-icon ${showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'}`}
+                  className={`password-icon ${
+                    showPassword ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
+                  }`}
                   onClick={handlePasswordVisibility}
                 ></i>
               </div>
             </div>
-            <button
-              type="submit"
-              onClick={onSubmit}
-              className="button"
-            >
+            <button type="submit" onClick={onSubmit} className="button">
               Register
             </button>
             <p className="social-text">Or Sign in with social platform</p>
             <div className="social-media">
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-twitter-x"></i>
               </a>
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-google"></i>
               </a>
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-linkedin"></i>
               </a>
             </div>
             <p className="account-text">
               Already have an account?
-              <Link to={'/login'}>
-                <a
-                  href="#"
-                  id="sign-in-btn2"
-                >
+              <Link to={"/login"}>
+                <a href="#" id="sign-in-btn2">
                   Login
                 </a>
               </Link>

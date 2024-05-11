@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import './login.css';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import "./login.css";
+import axios from "axios";
+import Swal from "sweetalert2";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   // handle password visibility
@@ -16,23 +16,23 @@ const Login = () => {
   };
 
   useEffect(() => {
-    const inputs = document.querySelectorAll('.input');
+    const inputs = document.querySelectorAll(".input");
 
     function focusFunc() {
       let parent = this.parentNode.parentNode;
-      parent.classList.add('focus');
+      parent.classList.add("focus");
     }
 
     function blurFunc() {
       let parent = this.parentNode.parentNode;
-      if (this.value == '') {
-        parent.classList.remove('focus');
+      if (this.value == "") {
+        parent.classList.remove("focus");
       }
     }
 
     inputs.forEach((input) => {
-      input.addEventListener('focus', focusFunc);
-      input.addEventListener('blur', blurFunc);
+      input.addEventListener("focus", focusFunc);
+      input.addEventListener("blur", blurFunc);
     });
   }, []);
 
@@ -55,24 +55,24 @@ const Login = () => {
       password: password,
     };
     axios
-      .post('https://reqres.in/api/login', bodyPayload)
+      .post("https://reqres.in/api/login", bodyPayload)
       .then((res) => {
         // menyimpan di local storage
         const token = res.data.token;
-        localStorage.setItem('accessToken', token);
+        localStorage.setItem("accessToken", token);
 
         // setelah berhasil login maka akan pindah halaman ke homepage
-        navigate('/home');
+        navigate("/home");
 
         // muncul alert success
         Swal.fire({
-          title: 'Login Berhasil',
-          icon: 'success',
+          title: "Login Berhasil",
+          icon: "success",
           showConfirmButton: true,
         });
 
-        setEmail('');
-        setPassword('');
+        setEmail("");
+        setPassword("");
         console.log(res);
         // setSuccess(res)
       })
@@ -80,9 +80,9 @@ const Login = () => {
         // console.log(err.response);
         // setError(err.response.data.error)
         Swal.fire({
-          title: 'Login Gagal',
+          title: "Login Gagal",
           text: err.response.data.error,
-          icon: 'error',
+          icon: "error",
           showConfirmButton: true,
         });
       });
@@ -93,18 +93,11 @@ const Login = () => {
     <div className="body">
       <div className="container login">
         <div className="img">
-          <img
-            src="../src/img/login.svg"
-            alt=""
-          />
+          <img src="/img/login.svg" alt="" />
         </div>
         <div className="login-container">
           <div className="form">
-            <img
-              src="../src/img/avatar.svg"
-              alt=""
-              className="avatar"
-            />
+            <img src="/img/avatar.svg" alt="" className="avatar" />
             <h2>Login</h2>
             <div className="input-div one">
               <div className="icon">
@@ -128,60 +121,43 @@ const Login = () => {
 
                 <input
                   className="input"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   onChange={onChangePassword}
                   value={password}
                 />
                 <i
-                  className={`password-icon ${showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'}`}
+                  className={`password-icon ${
+                    showPassword ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"
+                  }`}
                   onClick={handlePasswordVisibility}
                 ></i>
               </div>
             </div>
             <a className="link">Forgot Password?</a>
-            <button
-              type="submit"
-              onClick={onSubmit}
-              className="button"
-            >
+            <button type="submit" onClick={onSubmit} className="button">
               Login
             </button>
             <p className="social-text">Or Sign in with social platform</p>
             <div className="social-media">
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-facebook"></i>
               </a>
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-twitter-x"></i>
               </a>
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-google"></i>
               </a>
-              <a
-                href="#"
-                className="social-icon"
-              >
+              <a href="#" className="social-icon">
                 <i className="bi bi-linkedin"></i>
               </a>
             </div>
             <p className="account-text">
               Dont have an account?
-              <Link to={'/Register'}>
-                {' '}
-                <a
-                  href="#"
-                  id="sign-up-btn2"
-                >
+              <Link to={"/Register"}>
+                {" "}
+                <a href="#" id="sign-up-btn2">
                   Register
                 </a>
               </Link>
